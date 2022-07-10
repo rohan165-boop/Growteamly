@@ -47,11 +47,11 @@ class _LeavesViewState extends State<LeavesView> {
              child: TextFormField(
               decoration: InputDecoration(
                 hintText: "Search",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon:const Icon(Icons.search),
                 enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(color: Colors.red),),
+                borderSide:const BorderSide(color: Colors.red),),
                 focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(color: Colors.yellowAccent),),
+                borderSide:const BorderSide(color: Colors.yellowAccent),),
                 
               ),
                
