@@ -1,11 +1,16 @@
 import 'package:classapp/app/route.dart';
+import 'package:classapp/app/themes/dark_theme.dart';
+import 'package:classapp/app/themes/light_theme.dart';
 import 'package:classapp/features/profile/model/prolie_model.dart';
 import 'package:classapp/features/profile/services/profile_services.dart';
 import 'package:classapp/helpers/confirmation_dialog.dart';
 import 'package:classapp/helpers/snacks.dart';
 import 'package:classapp/injector.dart';
 import 'package:classapp/models/dummypage_model.dart';
+import 'package:classapp/providers/theme_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -36,11 +41,17 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
+    final themepro =Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade100,
         title:const Text("profile"),centerTitle: true,
         actions: [
+          CupertinoSwitch(
+            value: themepro.currentTheme == darkTheme, 
+            onChanged: (val) {
+            themepro.changeTheme();
+          } ),
           IconButton(onPressed: () async{
             final bool isConfirmed = await getConfirmationDialog(context);
             if(isConfirmed) {

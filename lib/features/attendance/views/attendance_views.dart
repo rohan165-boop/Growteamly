@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:classapp/helpers/image_picker.dart';
+import 'package:classapp/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class AttendanceView extends StatefulWidget {
   const AttendanceView({ Key? key }) : super(key: key);
@@ -14,6 +16,7 @@ class _AttendanceViewState extends State<AttendanceView> {
   XFile? _pickedImage;
   @override
   Widget build(BuildContext context) {
+    final counte = Provider.of<CounterProvider>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -22,8 +25,16 @@ class _AttendanceViewState extends State<AttendanceView> {
 
       body: Center(
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(counte.count.toString(),),
+            TextButton(onPressed: () {
+              counte.increaseCounter();
+            },
+             child:const Text("Increase count"),),
+             TextButton(onPressed: () {
+              counte.dereaseCounter();
+             },
+             child:const Text("Decrease count"),),
             Padding(
               padding: const EdgeInsets.only(left: 160, right: 160),
               child: ElevatedButton(onPressed: () {
