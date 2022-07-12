@@ -51,7 +51,10 @@ class _ProfileViewState extends State<ProfileView> {
             onTap: () {
               themepro.changeTheme();
             },
-            child: Icon(themepro.currentTheme == lightTheme ? Icons.light_mode : Icons.dark_mode) ,
+            child: Icon(
+              themepro.currentTheme == lightTheme ? 
+              Icons.light_mode : 
+              Icons.dark_mode) ,
           ),
               
           // CupertinoSwitch(

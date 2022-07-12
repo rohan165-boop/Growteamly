@@ -7,6 +7,7 @@ import 'package:classapp/providers/auth_provider.dart';
 import 'package:classapp/providers/counter_provider.dart';
 import 'package:classapp/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,6 +33,15 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTheme =Provider.of<ThemeProvider>(context);
     return  MaterialApp(
+      localizationsDelegates:const [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
+  supportedLocales:const [
+    Locale('en', ''), // English, no country code
+    Locale('ne', ''), // Nepali, no country code
+  ],
       title:"Grow Teamly",
       navigatorKey: AppSettings.navigatorKey,
       onGenerateRoute: RouteHandler.generateRoute,
