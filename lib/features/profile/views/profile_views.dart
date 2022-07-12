@@ -47,11 +47,18 @@ class _ProfileViewState extends State<ProfileView> {
         backgroundColor: Colors.greenAccent.shade100,
         title:const Text("profile"),centerTitle: true,
         actions: [
-          CupertinoSwitch(
-            value: themepro.currentTheme == darkTheme, 
-            onChanged: (val) {
-            themepro.changeTheme();
-          } ),
+          InkWell(
+            onTap: () {
+              themepro.changeTheme();
+            },
+            child: Icon(themepro.currentTheme == lightTheme ? Icons.light_mode : Icons.dark_mode) ,
+          ),
+              
+          // CupertinoSwitch(
+          //   value: themepro.currentTheme == darkTheme, 
+          //   onChanged: (val) {
+          //   themepro.changeTheme();
+          // } ),
           IconButton(onPressed: () async{
             final bool isConfirmed = await getConfirmationDialog(context);
             if(isConfirmed) {
