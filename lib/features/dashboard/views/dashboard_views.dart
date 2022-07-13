@@ -3,7 +3,10 @@ import 'dart:collection';
 import 'package:classapp/features/dashboard/models/dashboard_card_model.dart';
 import 'package:classapp/features/dashboard/services/dashboard_services.dart';
 import 'package:classapp/features/dashboard/widgets/card_data_widget.dart';
+import 'package:classapp/providers/language_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({ Key? key }) : super(key: key);
@@ -31,10 +34,19 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
+    final language = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title:const Text("Dashboard"),
+        title: Text(AppLocalizations.of(context).hello),
         automaticallyImplyLeading: false,
+        actions: [
+          InkWell(
+            onTap: () {
+              language.changeLocale();
+            },
+            child:const Icon(Icons.language, size: 30, color: Colors.redAccent,),
+          )
+        ],
       ),
 
       body: _isLoading? Center(

@@ -12,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProfileView extends StatefulWidget {
@@ -45,7 +46,8 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade100,
-        title:const Text("profile"),centerTitle: true,
+        title: Text(AppLocalizations.of(context).profile),
+        centerTitle: true,
         actions: [
           InkWell(
             onTap: () {
@@ -162,6 +164,9 @@ class _ProfileViewState extends State<ProfileView> {
               AppSnacks.showToast("Error", true );
              },
               child: Icon(Icons.face, size: 40, color: Colors.red.shade700,),),
+
+              const SizedBox(height: 20,),
+              Text(AppLocalizations.of(context).ro)
           ],
 
         ),

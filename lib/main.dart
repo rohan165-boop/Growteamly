@@ -5,11 +5,13 @@ import 'package:classapp/constants/app_constants.dart';
 import 'package:classapp/injector.dart';
 import 'package:classapp/providers/auth_provider.dart';
 import 'package:classapp/providers/counter_provider.dart';
+import 'package:classapp/providers/language_provider.dart';
 import 'package:classapp/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async{
 WidgetsFlutterBinding.ensureInitialized();
@@ -21,6 +23,7 @@ String? token = locator.get<SharedPreferences>().getString(AppConstants.token);
       ChangeNotifierProvider(create: (context) => CounterProvider()),
       ChangeNotifierProvider(create: (context) => Authprovider()),
       ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => LanguageProvider()),
 
     ],
      child: Myapp(token: token,),));
@@ -32,8 +35,10 @@ class Myapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appTheme =Provider.of<ThemeProvider>(context);
+    final appLocale = Provider.of<LanguageProvider>(context);
     return  MaterialApp(
       localizationsDelegates:const [
+        AppLocalizations.delegate, 
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -42,6 +47,7 @@ class Myapp extends StatelessWidget {
     Locale('en', ''), // English, no country code
     Locale('ne', ''), // Nepali, no country code
   ],
+      locale: appLocale.currentLocale,
       title:"Grow Teamly",
       navigatorKey: AppSettings.navigatorKey,
       onGenerateRoute: RouteHandler.generateRoute,
