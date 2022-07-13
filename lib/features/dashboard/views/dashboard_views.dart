@@ -42,9 +42,52 @@ class _DashboardViewState extends State<DashboardView> {
         actions: [
           InkWell(
             onTap: () {
-              language.changeLocale();
+              showModalBottomSheet(context: context, 
+              backgroundColor: Colors.grey.shade600,
+              shape:const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40)
+                )
+              ),
+              builder: (context) {
+                return SizedBox(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          language.changeLocale();
+                        },
+                        title:const Text("English",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          language.changeLocale();
+                        },
+                        title:const Text("Nepali",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),),
+                      )
+
+                    ],
+                  ),
+                );
+              });
             },
-            child:const Icon(Icons.language, size: 30, color: Colors.redAccent,),
+            child:const Icon(Icons.more_vert, 
+            size: 30, 
+            color: Colors.redAccent,),
           )
         ],
       ),
