@@ -11,4 +11,16 @@ class LanguageProvider extends ChangeNotifier{
     }
     notifyListeners();
   }
+  
+  setEnglish(){
+    currentLocale = Locale("en");
+    notifyListeners();
+  }
+  
+  setNepali(){
+    currentLocale = Locale("ne");
+    notifyListeners();
+  }
+
+
 }

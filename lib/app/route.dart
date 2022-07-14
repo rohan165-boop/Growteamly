@@ -3,4 +3,5 @@ class AppRoute {
   static const String homeRoute = "/home";
   static const String domyRoute = "/domy";
   static const String addDailyUpdateRoute = "/add-daily";
+  static const String settingsRoute = "/setting-route";
 }

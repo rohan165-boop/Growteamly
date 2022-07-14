@@ -1,12 +1,8 @@
-import 'dart:collection';
-
 import 'package:classapp/features/dashboard/models/dashboard_card_model.dart';
 import 'package:classapp/features/dashboard/services/dashboard_services.dart';
 import 'package:classapp/features/dashboard/widgets/card_data_widget.dart';
-import 'package:classapp/providers/language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({ Key? key }) : super(key: key);
@@ -34,62 +30,12 @@ class _DashboardViewState extends State<DashboardView> {
 
   @override
   Widget build(BuildContext context) {
-    final language = Provider.of<LanguageProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).hello),
         automaticallyImplyLeading: false,
-        actions: [
-          InkWell(
-            onTap: () {
-              showModalBottomSheet(context: context, 
-              backgroundColor: Colors.grey.shade600,
-              shape:const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40)
-                )
-              ),
-              builder: (context) {
-                return SizedBox(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ListTile(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          language.changeLocale();
-                        },
-                        title:const Text("English",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),),
-                      ),
-                      ListTile(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                          language.changeLocale();
-                        },
-                        title:const Text("Nepali",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),),
-                      )
-
-                    ],
-                  ),
-                );
-              });
-            },
-            child:const Icon(Icons.more_vert, 
-            size: 30, 
-            color: Colors.redAccent,),
-          )
-        ],
+        centerTitle: true,
+        title: Text(AppLocalizations.of(context).hello),
+        
       ),
 
       body: _isLoading? Center(

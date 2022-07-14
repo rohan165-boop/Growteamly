@@ -4,6 +4,7 @@ import 'package:classapp/features/daily-updates/views/add_dailyupdates_views.dar
 import 'package:classapp/home.dart';
 import 'package:classapp/models/dummypage_model.dart';
 import 'package:classapp/pages/domypage.dart';
+import 'package:classapp/pages/settings.dart';
 import 'package:flutter/material.dart';
 
 class RouteHandler{
@@ -20,6 +21,8 @@ class RouteHandler{
       ),);
        case AppRoute.addDailyUpdateRoute:
       return MaterialPageRoute(builder: (context) => const AddDailyUpdate() );
+      case AppRoute.settingsRoute:
+      return MaterialPageRoute(builder: (context) => const SettingsPage() );
      
       default : 
       return MaterialPageRoute(builder: (context) => const Logingpage());
